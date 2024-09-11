@@ -1,0 +1,16 @@
+schema:
+  - "https://graphql-pokemon2.vercel.app/"  # URL to your GraphQL schema
+overwrite: true                            # Overwrite GraphQL generated codes
+documents:                                 # Path to where your GraphQL operations (queries/mutations) are located
+  - "./src/graphql/**/*.graphql"
+  - "./src/graphql/**/*.ts"
+generates:
+  ./src/graphql/__generated__/graphql.ts:    # Where to generate the TypeScript types
+    plugins:
+      - typescript                           # Plugin to generate TypeScript types
+      - typescript-operations                # Plugin to generate types for query/mutation results and variables
+      - typescript-react-apollo              # Plugin to generate Apollo hooks (useQuery, useMutation, etc.)
+    config:
+      withHooks: true                        # Enables hook generation for Apollo Client
+      withComponent: false                   # Disable generating React components (only hooks are needed)
+      withHOC: false 

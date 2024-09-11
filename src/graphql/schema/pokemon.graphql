@@ -1,0 +1,102 @@
+#Get all pokemon with certain limit
+query pokemons($first: Int!){
+    pokemons(first: $first){
+        id
+        number
+        name
+        weight{
+            minimum
+            maximum
+        }
+        height{
+            minimum
+            maximum
+        }
+        classification
+        types
+        resistant
+        weaknesses
+        fleeRate
+        maxCP
+        maxHP
+        image
+    }
+}
+
+query pokemon($id: String, $name: String){
+    pokemon(id: $id, name: $name){
+        id
+        number
+        name
+        weight{
+            minimum
+            maximum
+        }
+        height{
+            minimum
+            maximum
+        }
+        classification
+        types
+        resistant
+        weaknesses
+        fleeRate
+        maxCP
+        maxHP
+        image
+    }
+}
+
+query pokemon($id: String, $name: String){
+    pokemon(id: $id, name: $name){
+        id
+        name
+        attacks{
+            fast{
+                name
+                type
+                damage
+            }
+            special{
+                name
+                type
+                damage
+            }
+        }
+    }
+}
+
+query pokemon($id: String, $name: String){
+    pokemon(id: $id, name: $name){
+        id
+        name
+        evolutions{
+            id
+            number
+            name
+            classification
+            types
+            resistant
+            weaknesses
+            fleeRate
+            maxCP
+            evolutions{
+                ...RecursivePokemonFragment
+            }
+            maxHP
+            image
+        }
+    }
+}
+
+fragment RecursivePokemonFragment on pokemon {
+    id
+    number
+    name
+    classification
+    types
+    resistant
+    weaknesses
+    fleeRate
+    maxCP
+}
