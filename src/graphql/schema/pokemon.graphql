@@ -4,11 +4,11 @@ query pokemons($first: Int!){
         id
         number
         name
-        weight{
+        weight {
             minimum
             maximum
         }
-        height{
+        height {
             minimum
             maximum
         }
@@ -23,16 +23,17 @@ query pokemons($first: Int!){
     }
 }
 
+# Get a Pokemon by Id or name
 query pokemon($id: String, $name: String){
     pokemon(id: $id, name: $name){
         id
         number
         name
-        weight{
+        weight {
             minimum
             maximum
         }
-        height{
+        height {
             minimum
             maximum
         }
@@ -47,56 +48,56 @@ query pokemon($id: String, $name: String){
     }
 }
 
-query pokemon($id: String, $name: String){
-    pokemon(id: $id, name: $name){
-        id
-        name
-        attacks{
-            fast{
-                name
-                type
-                damage
-            }
-            special{
-                name
-                type
-                damage
-            }
-        }
-    }
-}
+# query pokemon($id: String, $name: String){
+#     pokemon(id: $id, name: $name){
+#         id
+#         name
+#         attacks{
+#             fast{
+#                 name
+#                 type
+#                 damage
+#             }
+#             special{
+#                 name
+#                 type
+#                 damage
+#             }
+#         }
+#     }
+# }
 
-query pokemon($id: String, $name: String){
-    pokemon(id: $id, name: $name){
-        id
-        name
-        evolutions{
-            id
-            number
-            name
-            classification
-            types
-            resistant
-            weaknesses
-            fleeRate
-            maxCP
-            evolutions{
-                ...RecursivePokemonFragment
-            }
-            maxHP
-            image
-        }
-    }
-}
+# query pokemon($id: String, $name: String){
+#     pokemon(id: $id, name: $name){
+#         id
+#         name
+#         evolutions{
+#             id
+#             number
+#             name
+#             classification
+#             types
+#             resistant
+#             weaknesses
+#             fleeRate
+#             maxCP
+#             evolutions{
+#                 ...RecursivePokemonFragment
+#             }
+#             maxHP
+#             image
+#         }
+#     }
+# }
 
-fragment RecursivePokemonFragment on pokemon {
-    id
-    number
-    name
-    classification
-    types
-    resistant
-    weaknesses
-    fleeRate
-    maxCP
-}
+# fragment RecursivePokemonFragment on pokemon {
+#     id
+#     number
+#     name
+#     classification
+#     types
+#     resistant
+#     weaknesses
+#     fleeRate
+#     maxCP
+# }

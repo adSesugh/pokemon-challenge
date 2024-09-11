@@ -1,0 +1,19 @@
+.container {
+    @apply flex flex-col w-full sm:px-16 xs:px-6 py-8
+}
+
+.header {
+    @apply flex flex-row justify-between items-center w-full
+}
+
+.header > img {
+    @apply sm:w-1/12 xs:w-1/4 h-auto
+}
+
+.centerLogo {
+    @apply flex justify-center items-center w-full pt-4
+}
+
+.centerLogo > img {
+    @apply sm:w-1/4 xs:w-3/6 h-auto
+}
