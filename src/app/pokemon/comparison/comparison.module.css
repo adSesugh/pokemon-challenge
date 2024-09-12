@@ -1,0 +1,116 @@
+.container {
+    @apply flex sm:px-52 md:px-0 lg:px-52 xs:px-0 pt-6 xs:space-y-12 sm:space-y-0
+}
+
+.wrapper {
+    @apply grid sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1 gap-10
+}
+
+.card {
+    @apply bg-white rounded-3xl sm:px-20 md:px-10 xs:px-0 sm:py-10 xs:py-20 w-full shadow-lg shadow-slate-200
+}
+
+
+.card_header {
+    @apply flex items-center w-full justify-center pb-6
+}
+
+.detail {
+    @apply w-full xs:px-6
+}
+
+.detail > div {
+    @apply h-full
+}
+
+.pokemon_number {
+    @apply flex flex-row justify-between space-x-2 py-2 items-center
+}
+
+.pokemon_number > h1 {
+    @apply font-semibold
+}
+
+.pokemon_name {
+    @apply flex flex-row space-x-2 pb-3 items-center
+}
+
+.pokemon_name > span {
+    @apply text-xl font-semibold
+}
+
+.badge_section {
+    @apply flex flex-row space-x-3 mb-4
+}
+
+.dimension {
+    @apply flex py-5 w-full space-x-3 justify-between
+}
+
+.small_card {
+    @apply bg-gray-400/10 flex flex-row items-center justify-between space-x-3 xs:text-sm px-4 py-3 w-1/2 rounded-md
+}
+
+.stats {
+    @apply font-semibold text-lg pb-1
+}
+
+.stats_row {
+    @apply flex w-full space-x-3 justify-between
+}
+
+.small_card_red {
+    @apply bg-red-600 flex flex-row items-center justify-between px-4 py-2 w-1/2 rounded-md
+}
+
+.small_card_orange {
+    @apply bg-orange-400 flex flex-row items-center justify-between px-4 py-3 w-1/2 rounded-md
+}
+
+.small_card_yellow {
+    @apply bg-amber-200 flex flex-row items-center justify-between px-4 py-3 w-1/2 rounded-md
+}
+
+.small_card_sky {
+    @apply bg-sky-300 flex flex-row items-center justify-between px-4 py-3 w-1/2 rounded-md
+}
+
+.small_card_green {
+    @apply bg-green-600/60 flex flex-row items-center justify-between px-4 py-3 w-1/2 rounded-md
+}
+
+.small_card_light_red {
+    @apply bg-red-300 flex flex-row items-center justify-between px-4 py-3 w-1/2 rounded-md
+}
+
+.abilities {
+    @apply font-semibold text-lg pb-1
+}
+
+.small_card_abilities {
+    @apply bg-gray-400/10 flex justify-center px-4 py-3 w-1/2 rounded-md
+}
+
+.evolution_container {
+    @apply py-6 sm:px-16 xs:px-6 w-full
+}
+
+.evolution_container > h1 {
+    @apply py-4 text-2xl font-semibold
+}
+
+.evolution_container > div {
+    @apply flex flex-row py-4 items-center justify-center w-full
+}
+
+.evolution_img {
+    @apply flex flex-row items-center justify-center
+}
+
+.back_icon {
+    @apply flex absolute h-12 w-12 rounded-full justify-center items-center bg-slate-300/30 cursor-pointer
+}
+
+.circle {
+    @apply absolute inset-0 sm:top-[30%] xs:top-[133.5%] flex justify-center items-center
+}

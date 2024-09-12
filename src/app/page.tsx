@@ -2,15 +2,17 @@
 
 import SearchBar from "@/components/search-bar";
 import { usePokemonsQuery } from "@/graphql/__generated__/graphql";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import styles from '@/styles/common.module.css'
 import PokemonCard from "@/components/pokemon-card";
 import logo from '@/app/assets/logo.png'
 import Image from "next/image";
 import Loader from "@/components/loader";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState<string>('')
+    const dispatch = useDispatch()
 
     const { data, loading} = usePokemonsQuery({
         fetchPolicy: 'no-cache',
@@ -18,6 +20,10 @@ const Home = () => {
             first: 15
         }
     })  
+
+    useEffect(() => {
+        dispatch({ type: 'pokemon/resetPokemons' })
+    }, [dispatch])
 
     console.log(data)
 

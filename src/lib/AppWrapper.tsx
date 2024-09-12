@@ -1,17 +1,14 @@
 'use client'
 
 import { LayoutProp } from '@/types/common'
-import Header from '@/components/header'
-import React from 'react'
-import styles from '@/styles/common.module.css'
+import React, { useEffect } from 'react'
 import ApolloWrapper from "@/lib/ApolloProvider";
 import { Provider as ReduxProvider } from 'react-redux';
 import store from '@/redux/store';
 
 const AppWrapper: React.FC<LayoutProp> = ({ children }) => {
     return (
-        <div className={styles.appContainer}>
-            <Header />
+        <div className='select-none'>
             <ApolloWrapper>
                 <ReduxProvider store={store}>
                     {children}

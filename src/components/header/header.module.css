@@ -3,9 +3,9 @@
 }
 
 .header {
-    @apply flex flex-row justify-between items-center w-full
+    @apply flex flex-row justify-between items-center w-full pb-1
 }
 
-.header > img {
-    @apply sm:w-1/12 xs:w-1/4 h-auto
+.header_img {
+    @apply w-full h-auto
 }

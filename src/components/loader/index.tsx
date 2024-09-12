@@ -9,7 +9,7 @@ const Loader = () => {
                 <div className={styles.arrow_down}>
                     <ArrowDown  size={24} className='text-gray-700' />
                 </div>
-                <h1>Please wait...</h1>
+                <h1 className='xs:hidden sm:block'>Please wait...</h1>
             </div>
         </div>
     )

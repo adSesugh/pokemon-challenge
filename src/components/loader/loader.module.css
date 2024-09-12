@@ -1,9 +1,9 @@
 .card {
-    @apply flex bg-white rounded-2xl shadow-sm shadow-slate-100 p-6 h-[8rem] animate-pulse grid-flow-row w-full
+    @apply flex bg-white rounded-2xl shadow-sm shadow-slate-100 p-6 sm:h-[8rem] xs:h-[6rem] animate-pulse w-full
 }
 
 .card > div {
-    @apply flex flex-col justify-center items-center h-full
+    @apply flex flex-col justify-center items-center h-full w-full
 }
 
 .arrow_down {
