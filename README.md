@@ -55,6 +55,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Challenges
 - The apis to some extent does not tally with the data required to populate card some cards and not is not provision even to adjust the apis.
 - Some engagement at work could not allow me to give in my best short on the this as should however, believe if am given the opportunity to focus on one thing of cause i will do much better.
-- I will implement search functionality before close of 12pm 
 
 
