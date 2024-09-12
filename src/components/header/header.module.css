@@ -9,11 +9,3 @@
 .header > img {
     @apply sm:w-1/12 xs:w-1/4 h-auto
 }
-
-.centerLogo {
-    @apply flex justify-center items-center w-full sm:pt-4 xs:pt-12 pb-3
-}
-
-.centerLogo > img {
-    @apply sm:w-1/4 xs:w-3/6 h-auto
-}

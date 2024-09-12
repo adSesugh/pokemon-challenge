@@ -1,3 +1,19 @@
 .appContainer {
     @apply sm:px-16 xs:px-6 py-8
-  }
+}
+
+.wrapper {
+  @apply grid sm:grid-cols-3 xs:grid-cols-1 py-6 gap-4 sm:px-32 xs:px-0
+}
+
+.homeContainer {
+  @apply flex flex-col w-full justify-center items-center
+}
+
+.centerLogo {
+  @apply flex justify-center items-center w-full sm:pt-4 xs:pt-12 pb-3
+}
+
+.centerLogo > img {
+  @apply sm:w-1/4 xs:w-3/6 h-auto
+}

@@ -1,11 +1,12 @@
 'use client'
 
-import Header from "@/components/header";
 import SearchBar from "@/components/search-bar";
-import { usePokemonQuery, usePokemonsQuery } from "@/graphql/__generated__/graphql";
+import { usePokemonsQuery } from "@/graphql/__generated__/graphql";
 import { useState } from "react";
 import styles from '@/styles/common.module.css'
 import PokemonCard from "@/components/pokemon-card";
+import logo from '@/app/assets/logo.png'
+import Image from "next/image";
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState<string>('')
@@ -15,19 +16,30 @@ const Home = () => {
         variables: {
             first: 15
         }
-    })
+    })  
 
-    console.log(data?.pokemons)
+    console.log(data)
+
     return (
-        <div className={styles.appContainer}>
-            <Header />
+        <div className={styles.homeContainer}>
+            <div className={styles.centerLogo}>
+                <Image 
+                    src={logo}
+                    width={400}
+                    height={250}
+                    alt='Main logo'
+                    sizes='100vw'
+                />
+            </div>
             <SearchBar 
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             />
-            <div className="grid sm:grid-cols-3 xs:grid-cols-1 py-6 gap-4 sm:px-32 xs:px-0">
+            <div className={styles.wrapper}>
                 {data?.pokemons?.map((pokemon, index) => (
-                    <PokemonCard key={index} pokemon={pokemon} />
+                    <div key={index}>
+                        <PokemonCard pokemon={pokemon} />
+                    </div>
                 ))}
             </div>
         </div>

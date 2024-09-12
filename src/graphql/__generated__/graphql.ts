@@ -126,7 +126,37 @@ export type PokemonQueryVariables = Exact<{
 
 export type PokemonQuery = { __typename?: 'Query', pokemon?: { __typename?: 'Pokemon', id: string, number?: string | null, name?: string | null, classification?: string | null, types?: Array<string | null> | null, resistant?: Array<string | null> | null, weaknesses?: Array<string | null> | null, fleeRate?: number | null, maxCP?: number | null, maxHP?: number | null, image?: string | null, weight?: { __typename?: 'PokemonDimension', minimum?: string | null, maximum?: string | null } | null, height?: { __typename?: 'PokemonDimension', minimum?: string | null, maximum?: string | null } | null } | null };
 
+export type PokemonAttackQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+}>;
 
+
+export type PokemonAttackQuery = { __typename?: 'Query', pokemon?: { __typename?: 'Pokemon', id: string, name?: string | null, attacks?: { __typename?: 'PokemonAttack', fast?: Array<{ __typename?: 'Attack', name?: string | null, type?: string | null, damage?: number | null } | null> | null, special?: Array<{ __typename?: 'Attack', name?: string | null, type?: string | null, damage?: number | null } | null> | null } | null } | null };
+
+export type PokemonEvolutionsQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type PokemonEvolutionsQuery = { __typename?: 'Query', pokemon?: { __typename?: 'Pokemon', id: string, name?: string | null, evolutions?: Array<{ __typename?: 'Pokemon', id: string, number?: string | null, name?: string | null, classification?: string | null, types?: Array<string | null> | null, resistant?: Array<string | null> | null, weaknesses?: Array<string | null> | null, fleeRate?: number | null, maxCP?: number | null, maxHP?: number | null, image?: string | null, evolutions?: Array<{ __typename?: 'Pokemon', id: string, number?: string | null, name?: string | null, classification?: string | null, types?: Array<string | null> | null, resistant?: Array<string | null> | null, weaknesses?: Array<string | null> | null, fleeRate?: number | null, maxCP?: number | null } | null> | null } | null> | null } | null };
+
+export type RecursivePokemonFragmentFragment = { __typename?: 'Pokemon', id: string, number?: string | null, name?: string | null, classification?: string | null, types?: Array<string | null> | null, resistant?: Array<string | null> | null, weaknesses?: Array<string | null> | null, fleeRate?: number | null, maxCP?: number | null };
+
+export const RecursivePokemonFragmentFragmentDoc = gql`
+    fragment RecursivePokemonFragment on Pokemon {
+  id
+  number
+  name
+  classification
+  types
+  resistant
+  weaknesses
+  fleeRate
+  maxCP
+}
+    `;
 export const PokemonsDocument = gql`
     query pokemons($first: Int!) {
   pokemons(first: $first) {
@@ -244,3 +274,115 @@ export type PokemonQueryHookResult = ReturnType<typeof usePokemonQuery>;
 export type PokemonLazyQueryHookResult = ReturnType<typeof usePokemonLazyQuery>;
 export type PokemonSuspenseQueryHookResult = ReturnType<typeof usePokemonSuspenseQuery>;
 export type PokemonQueryResult = Apollo.QueryResult<PokemonQuery, PokemonQueryVariables>;
+export const PokemonAttackDocument = gql`
+    query pokemonAttack($id: String, $name: String) {
+  pokemon(id: $id, name: $name) {
+    id
+    name
+    attacks {
+      fast {
+        name
+        type
+        damage
+      }
+      special {
+        name
+        type
+        damage
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __usePokemonAttackQuery__
+ *
+ * To run a query within a React component, call `usePokemonAttackQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePokemonAttackQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePokemonAttackQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function usePokemonAttackQuery(baseOptions?: Apollo.QueryHookOptions<PokemonAttackQuery, PokemonAttackQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PokemonAttackQuery, PokemonAttackQueryVariables>(PokemonAttackDocument, options);
+      }
+export function usePokemonAttackLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PokemonAttackQuery, PokemonAttackQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PokemonAttackQuery, PokemonAttackQueryVariables>(PokemonAttackDocument, options);
+        }
+export function usePokemonAttackSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<PokemonAttackQuery, PokemonAttackQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<PokemonAttackQuery, PokemonAttackQueryVariables>(PokemonAttackDocument, options);
+        }
+export type PokemonAttackQueryHookResult = ReturnType<typeof usePokemonAttackQuery>;
+export type PokemonAttackLazyQueryHookResult = ReturnType<typeof usePokemonAttackLazyQuery>;
+export type PokemonAttackSuspenseQueryHookResult = ReturnType<typeof usePokemonAttackSuspenseQuery>;
+export type PokemonAttackQueryResult = Apollo.QueryResult<PokemonAttackQuery, PokemonAttackQueryVariables>;
+export const PokemonEvolutionsDocument = gql`
+    query pokemonEvolutions($id: String, $name: String) {
+  pokemon(id: $id, name: $name) {
+    id
+    name
+    evolutions {
+      id
+      number
+      name
+      classification
+      types
+      resistant
+      weaknesses
+      fleeRate
+      maxCP
+      evolutions {
+        ...RecursivePokemonFragment
+      }
+      maxHP
+      image
+    }
+  }
+}
+    ${RecursivePokemonFragmentFragmentDoc}`;
+
+/**
+ * __usePokemonEvolutionsQuery__
+ *
+ * To run a query within a React component, call `usePokemonEvolutionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePokemonEvolutionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePokemonEvolutionsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function usePokemonEvolutionsQuery(baseOptions?: Apollo.QueryHookOptions<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>(PokemonEvolutionsDocument, options);
+      }
+export function usePokemonEvolutionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>(PokemonEvolutionsDocument, options);
+        }
+export function usePokemonEvolutionsSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>(PokemonEvolutionsDocument, options);
+        }
+export type PokemonEvolutionsQueryHookResult = ReturnType<typeof usePokemonEvolutionsQuery>;
+export type PokemonEvolutionsLazyQueryHookResult = ReturnType<typeof usePokemonEvolutionsLazyQuery>;
+export type PokemonEvolutionsSuspenseQueryHookResult = ReturnType<typeof usePokemonEvolutionsSuspenseQuery>;
+export type PokemonEvolutionsQueryResult = Apollo.QueryResult<PokemonEvolutionsQuery, PokemonEvolutionsQueryVariables>;

@@ -2,9 +2,9 @@ import React from 'react'
 import { BadgeType } from './types'
 import styles from './card.module.css'
 
-const Badge: React.FC<BadgeType> = ({ name }) => {
+const Badge: React.FC<BadgeType> = ({ name, bgColor = '' }) => {
     return (
-        <div className={styles.badge}>
+        <div className={`${styles.badge} ${bgColor}`}>
             <span>{name}</span>
         </div>
     )

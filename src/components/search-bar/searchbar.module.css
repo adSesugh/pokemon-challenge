@@ -11,10 +11,10 @@
 }
 
 .inputField {
-    @apply h-12 w-full rounded-lg border-0 focus:border focus:border-gray-400 shadow-lg py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-200 sm:text-sm sm:leading-6
+    @apply h-14 w-full rounded-lg border-0 focus:border focus:border-gray-400 shadow-lg py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-200 sm:text-sm sm:leading-6
 }
 
 .searchButton {
-    @apply bg-red-500 text-white rounded-lg p-3
+    @apply bg-red-500 text-white rounded-lg py-3.5 px-4 shadow-sm shadow-red-500
 }
 
