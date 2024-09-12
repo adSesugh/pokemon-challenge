@@ -7,11 +7,11 @@
 }
 
 .form {
-    @apply sm:w-3/5 xs:w-4/5 mx-auto
+    @apply sm:w-5/6 xs:w-full mx-auto
 }
 
 .inputField {
-    @apply h-12 w-full rounded-lg border-0 focus:border focus:border-gray-400 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-200 sm:text-sm sm:leading-6
+    @apply h-12 w-full rounded-lg border-0 focus:border focus:border-gray-400 shadow-lg py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-200 sm:text-sm sm:leading-6
 }
 
 .searchButton {

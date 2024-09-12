@@ -1,5 +1,5 @@
 .container {
-    @apply flex flex-col w-full sm:px-16 xs:px-6 py-8
+    @apply flex flex-col w-full
 }
 
 .header {
@@ -11,7 +11,7 @@
 }
 
 .centerLogo {
-    @apply flex justify-center items-center w-full pt-4
+    @apply flex justify-center items-center w-full sm:pt-4 xs:pt-12 pb-3
 }
 
 .centerLogo > img {

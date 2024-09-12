@@ -1,0 +1,43 @@
+.card {
+    @apply bg-white rounded-2xl shadow-sm shadow-slate-100 p-6 h-[15rem]
+}
+
+.cardHeader {
+    @apply flex justify-between items-center mb-0
+}
+
+.badgeWrapper {
+    @apply flex flex-row space-x-2
+}
+
+.badge {
+    @apply flex items-center px-4 py-2 bg-lime-600/70 text-black rounded-full
+}
+
+.badge > span {
+    @apply text-sm
+}
+
+.cardBody {
+    @apply flex flex-row justify-between items-center w-full space-x-6 h-full -mt-2
+}
+
+.pokemonContent {
+    @apply w-3/5
+}
+
+.pokemonContent > h1 {
+    @apply text-xl font-semibold
+}
+
+.pokemonContent > p {
+    @apply text-sm pb-1 line-clamp-4
+}
+
+.pokemonContent > button {
+    @apply bg-gray-300/20 px-5 py-3 rounded-xl
+}
+
+.pokemonImage {
+    @apply flex w-2/5 inset-0 float-right items-end justify-self-end h-full pb-6
+}
