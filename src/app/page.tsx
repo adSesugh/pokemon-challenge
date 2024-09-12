@@ -2,16 +2,17 @@
 
 import SearchBar from "@/components/search-bar";
 import { usePokemonsQuery } from "@/graphql/__generated__/graphql";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import styles from '@/styles/common.module.css'
 import PokemonCard from "@/components/pokemon-card";
 import logo from '@/app/assets/logo.png'
 import Image from "next/image";
+import Loader from "@/components/loader";
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState<string>('')
 
-    const { data} = usePokemonsQuery({
+    const { data, loading} = usePokemonsQuery({
         fetchPolicy: 'no-cache',
         variables: {
             first: 15
@@ -35,13 +36,19 @@ const Home = () => {
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             />
-            <div className={styles.wrapper}>
-                {data?.pokemons?.map((pokemon, index) => (
-                    <div key={index}>
-                        <PokemonCard pokemon={pokemon} />
-                    </div>
-                ))}
-            </div>
+            {loading ? (
+                <div className="px-32 py-8">
+                    <Loader />
+                </div>
+            ): (
+                <div className={styles.wrapper}>
+                    {data?.pokemons?.map((pokemon, index) => (
+                        <div key={index}>
+                            <PokemonCard pokemon={pokemon} />
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }

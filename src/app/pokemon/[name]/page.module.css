@@ -1,9 +1,9 @@
 .container {
-    @apply sm:px-52 xs:px-0 pt-6
+    @apply sm:px-52 xs:px-0 pt-6 relative
 }
 
 .card {
-    @apply bg-white rounded-2xl w-full shadow-lg sm:p-10 xs:px-0
+    @apply bg-white rounded-3xl w-full shadow-lg sm:p-10 xs:px-0
 }
 
 .cardBody {
@@ -99,11 +99,11 @@
 }
 
 .evolution_container {
-    @apply py-6 px-16 w-full
+    @apply py-6 sm:px-16 xs:px-6 w-full
 }
 
 .evolution_container > h1 {
-    @apply py-2 text-2xl font-semibold
+    @apply py-4 text-2xl font-semibold
 }
 
 .evolution_container > div {
@@ -112,4 +112,8 @@
 
 .evolution_img {
     @apply flex flex-row items-center justify-center
+}
+
+.back_icon {
+    @apply flex absolute h-12 w-12 rounded-full justify-center items-center bg-slate-300/30 cursor-pointer
 }

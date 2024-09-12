@@ -1,6 +1,6 @@
 export type BadgeType = {
     name: string
-    bgColor: string
+    bgColor?: string
 }
 
 export type PokemonCardType = {

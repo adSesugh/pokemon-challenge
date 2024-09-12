@@ -1,0 +1,11 @@
+.card {
+    @apply flex bg-white rounded-2xl shadow-sm shadow-slate-100 p-6 h-[8rem] animate-pulse grid-flow-row w-full
+}
+
+.card > div {
+    @apply flex flex-col justify-center items-center h-full
+}
+
+.arrow_down {
+    @apply flex animate-bounce h-12 w-12 rounded-full justify-center items-center border border-green-300 bg-slate-300/70 cursor-pointer
+}

@@ -38,6 +38,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ pokemon }) => {
                         priority
                         width={350}
                         height={100}
+                        loading={'eager'}
                         className='w-full h-3/4'
                     />
                 </div>
