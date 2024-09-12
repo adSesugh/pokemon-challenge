@@ -67,7 +67,10 @@ const PokemonCard: React.FC<PokemonProps> = ({ pokemon }) => {
                     />
                 </div>
             </div>
-            <Modal dismissible show={openModal} onClose={() => setOpenModal(false)}>
+            <Modal dismissible show={openModal} onClose={() => {
+                setOpenModal(false)
+                dispatch({ type: 'pokemon/resetPokemons' })
+            }}>
                 <Modal.Header>Compare two Pokemon</Modal.Header>
                 <Modal.Body>
                 <div className="space-y-6">
