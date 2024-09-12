@@ -36,7 +36,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ pokemon }) => {
 
 
     return (
-        <button className={`${styles.card} ${findPokemon() ? 'border-2 border-blue-500' : '' }`} onClick={() => {
+        <div className={`${styles.card} ${findPokemon() ? 'border-2 border-blue-500' : '' }`} onClick={() => {
             handleSelectedPoken(pokemon)
         }}>
             <div className={styles.cardHeader}>
@@ -78,6 +78,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ pokemon }) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={() => {
+                        
                         router.push('/pokemon/comparison')
                         setOpenModal(false)
                     }}>Yes</Button>
@@ -89,7 +90,7 @@ const PokemonCard: React.FC<PokemonProps> = ({ pokemon }) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </button>
+        </div>
     )
 }
 

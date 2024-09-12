@@ -49,6 +49,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 3. To compare two pokemons click on the cards to select two, you will be asked if you want to compare, go ahead and answer yes. This will take you the compare page where you can see differences about the pokemons.
 
 4. Where back button is not applicable use the logo image on the top left to navigate to the home screen.
+5. Click on know more button to view the details of each card.
+
 
 ## Challenges
 - The apis to some extent does not tally with the data required to populate card some cards and not is not provision even to adjust the apis.

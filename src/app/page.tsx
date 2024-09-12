@@ -12,12 +12,13 @@ import { useDispatch } from "react-redux";
 
 const Home = () => {
     const [searchQuery, setSearchQuery] = useState<string>('')
+    const [limit] = useState<number>(15)
     const dispatch = useDispatch()
 
     const { data, loading} = usePokemonsQuery({
         fetchPolicy: 'no-cache',
         variables: {
-            first: 15
+            first: limit
         }
     })  
 
