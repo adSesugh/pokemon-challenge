@@ -79,8 +79,6 @@ const PokemonDetail = () => {
                                         alt={pokemon?.name as string}
                                         width={400}
                                         height={400}
-                                        //loading={'lazy'}
-                                        priority
                                         style={{ display: loading ? "none" : "block" }}
                                     />
                                 </div>

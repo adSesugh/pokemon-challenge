@@ -3,7 +3,6 @@
 import React, { useEffect } from 'react'
 import styles from './comparison.module.css'
 import Image from 'next/image'
-import pokemon from '@/app/assets/pokemon.jpeg'
 import Badge from '@/components/pokemon-card/Badge'
 import circle from '@/app/assets/circle.png'
 import { useSelector } from 'react-redux'
@@ -12,10 +11,10 @@ import { useRouter } from 'next/navigation'
 
 const PokemonComparison = () => {
     const router = useRouter()
-    const pokemons = useSelector((state: RootState) => state.pokemen).pokemons
+    const selectedPokemons = useSelector((state: RootState) => state.pokemen).selectedPokemons
 
     useEffect(() => {
-        if(pokemons.length === 0) {
+        if(selectedPokemons.length === 0) {
             router.push('/')
         }
     }, [])
@@ -33,7 +32,7 @@ const PokemonComparison = () => {
                 />
             </div>
             <div className={styles.wrapper}>
-                {pokemons.map((pokemon, index) => (
+                {selectedPokemons.map((pokemon, index) => (
                     <div className={styles.card}>
                         <div className={styles.card_header}>
                             <Image 

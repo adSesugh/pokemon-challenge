@@ -3,7 +3,7 @@
 }
 
 .wrapper {
-  @apply grid sm:grid-cols-3 xs:grid-cols-1 py-6 gap-4 sm:px-32 xs:px-0
+  @apply grid sm:grid-cols-3 xs:grid-cols-1 py-6 gap-4 sm:px-32 xs:px-0 w-full
 }
 
 .homeContainer {
@@ -16,4 +16,8 @@
 
 .centerLogo > img {
   @apply sm:w-1/4 xs:w-3/6 h-auto
+}
+
+.emptyState {
+  @apply flex h-24 bg-white justify-center items-center  w-full
 }

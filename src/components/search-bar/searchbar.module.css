@@ -3,7 +3,7 @@
 }
 
 .searchWrapper {
-    @apply flex space-x-1
+    @apply flex space-x-1 sm:w-5/6 xs:w-full mx-auto
 }
 
 .form {

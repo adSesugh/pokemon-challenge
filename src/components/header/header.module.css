@@ -7,5 +7,5 @@
 }
 
 .header_img {
-    @apply w-full h-auto
+    @apply w-full h-auto cursor-pointer
 }
