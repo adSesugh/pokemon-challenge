@@ -16,8 +16,10 @@ const SearchBar: React.FC<TextFieldType> = ({ value, setValue, handleOnChange, c
                     onChange={(e: ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
                     className={`${className} ${styles.inputField}`}
                     placeholder={rest.placeholder}
+                    autoComplete='off'
+                    cy-data="input"
                 />
-                <button className={styles.searchButton} onClick={handleOnChange}>
+                <button className={styles.searchButton} onClick={handleOnChange} cy-data='search' id='search'>
                     <MagnifyingGlass size={24} />
                 </button>
             </div>

@@ -20,7 +20,6 @@ const pokemonSlice = createSlice({
             state.pokemons = []
         },
         setPokemons: (state, action) => {
-            console.log(action.payload)
             state.pokemons = action.payload
         },
         resetSelectedPokemons: (state) => {

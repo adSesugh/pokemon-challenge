@@ -17,13 +17,15 @@ import { useRouter } from "next/navigation";
 const Home = () => {
     const router = useRouter()
     const dispatch = useAppDispatch()
-    const [limit] = useState<number>(15)
+    const totalPageSize = 15;
+    const [limit, setLimit] = useState<number>(totalPageSize)
     const [value, setValue] = useState<string>('')
     const [openModal, setOpenModal] = useState(false);
+    const [loadMore, setLoadMore] = useState<boolean>(false)
     const pokemons = useSelector((state: RootState) => state.pokemen).pokemons
     const selectedPokemons = useSelector((state: RootState) => state.pokemen).selectedPokemons
 
-    const [getPokemons, {loading}] = usePokemonsLazyQuery({fetchPolicy: 'no-cache'})
+    const [getPokemons, {loading, fetchMore }] = usePokemonsLazyQuery({fetchPolicy: 'no-cache'})
     const [searchPokemons, {loading: searchPokemonLoading }] = usePokemonLazyQuery({fetchPolicy: 'no-cache'})
 
     useEffect(() => {
@@ -41,8 +43,21 @@ const Home = () => {
                 first: limit
             }
         })).data
-
+        setLimit(prev => prev + totalPageSize)
         dispatch(setPokemons(res?.pokemons))
+    }
+
+    const fetchMorePokemons = async () => {
+        setLoadMore(!loadMore)
+        const morePokemons = (await getPokemons({
+            variables: {
+                first: limit
+            }
+        })).data
+
+        setLimit(prev => prev + totalPageSize)
+        setLoadMore(false)
+        dispatch(setPokemons(morePokemons?.pokemons))
     }
 
     const handleSearch = async () => {
@@ -88,32 +103,42 @@ const Home = () => {
                 handleOnChange={handleSearch}
                 name="query"
             />
-            {loading || searchPokemonLoading ? (
-                <div className="px-32 py-8">
+            {(loading || searchPokemonLoading) && !loadMore ? (
+                <div className={styles.loader}>
                     <Loader />
                 </div>
-            ): (
+            ): !pokemons?.length ? (
+                <div className={styles.emptyState}>
+                    <span>No record found</span>
+                </div>
+            ) : (
                 <div className={styles.wrapper}>
-                    {pokemons?.length > 0 ? (
-                        <>
-                            {pokemons?.map((pokemon, index: number) => (
-                                <div key={index}>
-                                    <PokemonCard 
-                                        pokemon={pokemon} 
-                                        handleSelectedPoken={handleSelectedPoken}
-                                        router={router}
-                                    />
-                                </div>
-                            ))}
-                        </>
-                    ): (
-                        <div className={styles.emptyState}>
-                            <span>No record found</span>
+                    {pokemons?.map((pokemon, index: number) => (
+                        <div key={index}>
+                            <PokemonCard 
+                                pokemon={pokemon} 
+                                handleSelectedPoken={handleSelectedPoken}
+                                router={router}
+                            />
                         </div>
-                    )}
+                    ))}
                 </div>
             )}
-            <Modal dismissible show={openModal} onClose={() => {
+            {pokemons?.length > 0 && (
+                <div className="">
+                    <Button 
+                        size="md" 
+                        isProcessing={loadMore} 
+                        outline 
+                        className="border-blue-600/40"
+                        pill
+                        onClick={fetchMorePokemons}
+                    >
+                        {loadMore ? 'Loading' : 'Load more'}
+                    </Button>
+                </div>
+            )}
+            <Modal dismissible={false} size={'sm'} show={openModal} onClose={() => {
                 setOpenModal(false)
                 dispatch({ type: 'pokemon/resetSelectedPokemons' })
             }}>
@@ -124,8 +149,7 @@ const Home = () => {
                         Would you like to compare the selected Pokemon?
                     </p>
                 </div>
-                </Modal.Body>
-                <Modal.Footer>
+                <div className="flex pt-8 float-end gap-3">
                     <Button onClick={() => {
                         setOpenModal(false)
                         return router.push('/pokemon/comparison')
@@ -136,7 +160,8 @@ const Home = () => {
                     }}>
                         Decline
                     </Button>
-                </Modal.Footer>
+                </div>
+                </Modal.Body>
             </Modal>
         </div>
     )
